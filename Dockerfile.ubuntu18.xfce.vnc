@@ -55,7 +55,7 @@ RUN $INST_SCRIPTS/libnss_wrapper.sh
 ADD ./src/common/scripts $STARTUPDIR
 RUN $INST_SCRIPTS/set_user_permission.sh $STARTUPDIR $HOME
 
-RUN apt-get install -y sudo xrdp
+RUN apt-get install -y sudo xrdp curl
 
 RUN chmod 666 /etc/passwd
 RUN chgrp 100 /etc/passwd
