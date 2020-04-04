@@ -62,7 +62,7 @@ RUN chgrp 100 /etc/passwd
 
 RUN echo "%users	  ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
-USER 1000
+USER 0
 
 EXPOSE 3389
 ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]
