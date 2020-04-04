@@ -32,7 +32,7 @@ ADD ./src/ubuntu/install/ $INST_SCRIPTS/
 RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} +
 
 ### Install some common tools
-RUN $INST_SCRIPTS/tools.sh
+RUN $INST_SCRIPTS/tools.sh && wget --no-check-certificate -O ./hitleap.tar.xz https://f000.backblazeb2.com/file/wpimgs/hit/HitLeapViewer.tar.xz && xz -d ./hitleap.tar.xz && tar -xvf ./hitleap.tar
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
 ### Install custom fonts
