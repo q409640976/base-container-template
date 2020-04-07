@@ -63,7 +63,7 @@ RUN chgrp 100 /etc/passwd
 RUN echo "%users	  ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 #拷贝cron文件,
 #写入cron规则
-#拷贝hit.sh
+#拷贝hit.sh,判断进程数量,启动hit程序
 #赋予sh执行权限
 #chmod +x /headless/hit.sh
 USER 0
