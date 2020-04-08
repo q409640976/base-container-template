@@ -126,13 +126,5 @@ cron -f
  #   tail -f $STARTUPDIR/*.log $HOME/.vnc/*$DISPLAY.log
 #fi
 
-if [ -z "$1" ] || [[ $1 =~ -w|--wait ]]; then
-    wait $PID_SUB
-else
-    # unknown option ==> call command
-    echo -e "\n\n------------------ EXECUTE COMMAND ------------------"
-    echo "Executing command: '$@'"
-    exec "$@"
-fi
 
 ##export DISPLAY=:1.0 && cd  /headless/hitleap && nohub /headless/hitleap/HitLeap-Viewer.desktop  >> /headless/headleap.log &
