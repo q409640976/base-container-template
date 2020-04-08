@@ -79,4 +79,3 @@ USER 0
 
 EXPOSE 3389
 ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]
-CMD ["--wait"]
