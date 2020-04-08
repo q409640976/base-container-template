@@ -60,10 +60,10 @@ trap cleanup SIGINT SIGTERM
 echo "default:x:$(id -u):$(id -g):,,,:/headless:/bin/bash" >> /etc/passwd
 
 ## Create the default password
-sudo usermod --password $(openssl passwd -1 default) default
+##sudo usermod --password $(openssl passwd -1 default) default
 
 ## Add default user to the group with sudo permissions (fixes RDP bug with user not being in group)
-sudo usermod -aG users default
+##sudo usermod -aG users default
 
 ## Fix permissions
 #sudo chown -R default:$(id -g) /headless/.cache/
