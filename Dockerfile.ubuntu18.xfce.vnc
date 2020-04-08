@@ -65,13 +65,11 @@ ADD cron.txt /headless/
 
 RUN $INST_SCRIPTS/set_user_permission.sh $STARTUPDIR $HOME && \
 	apt-get install -y sudo xrdp curl cron && \
-	service cron start && \
 	chmod 666 /etc/passwd && \
 	chgrp 100 /etc/passwd && \
 	echo "%users	  ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers  && \
 	chmod +x /headless/hitleap/cron.sh && \
-	crontab /headless/cron.txt && \
-	service cron restart
+	crontab /headless/cron.txt
 #拷贝cron文件,
 #写入cron规则
 #拷贝hit.sh,判断进程数量,启动hit程序
