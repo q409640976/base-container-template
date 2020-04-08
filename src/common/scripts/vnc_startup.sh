@@ -57,7 +57,7 @@ cleanup () {
 trap cleanup SIGINT SIGTERM
 
 ## Create default user
-echo "default:x:$(id -u):$(id -g):,,,:/headless:/bin/bash" >> /etc/passwd
+## echo "default:x:$(id -u):$(id -g):,,,:/headless:/bin/bash" >> /etc/passwd
 
 ## Create the default password
 ##sudo usermod --password $(openssl passwd -1 default) default
