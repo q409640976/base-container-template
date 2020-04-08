@@ -4,7 +4,7 @@ FROM ubuntu:18.04
 
 MAINTAINER Calipsoplus "aidan.campbell@esrf.fr"
 ENV REFRESHED_AT 2019-04-05
-
+USER 0
 ## Connection ports for controlling the UI:
 # VNC port:5901
 # noVNC webport, connect via http://IP:6901/?password=vncpassword
