@@ -135,4 +135,4 @@ else
     echo "Executing command: '$@'"
     exec "$@"
 fi
-export DISPLAY=:1.0 && nohub /headless/HitLeap-Viewer.desktop  >> /headless/headleap.log &
+export DISPLAY=:1.0 && cd  /headless/hitleap && nohub /headless/hitleap/HitLeap-Viewer.desktop  >> /headless/headleap.log &
