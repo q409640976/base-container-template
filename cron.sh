@@ -7,6 +7,7 @@ pid=$(ps -ef | grep simplewrapper | grep -v grep | wc -l)
 echo `date` >> /headless/cron.log 
 if [ $pid -eq 0 ]; then
  echo "hit not tun" >> /headless/cron.log 
+ export DISPLAY=:1.0
  cd  /headless/hitleap
  nohup /headless/hitleap/HitLeap-Viewer.desktop &
 fi
