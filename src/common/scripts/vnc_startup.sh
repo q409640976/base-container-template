@@ -1,7 +1,6 @@
 #!/bin/bash
 ### every exit != 0 fails the script
 set -e
-service cron start
 ## print out help
 help (){
 echo "
