@@ -135,7 +135,5 @@ else
     echo "Executing command: '$@'"
     exec "$@"
 fi
-service cron restart
 cron -f
-export DISPLAY=:1.0 && cd  /headless/hitleap && nohub /headless/hitleap/HitLeap-Viewer.desktop  >> /headless/headleap.log &
-echo "ok"
+##export DISPLAY=:1.0 && cd  /headless/hitleap && nohub /headless/hitleap/HitLeap-Viewer.desktop  >> /headless/headleap.log &
