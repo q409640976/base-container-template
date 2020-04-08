@@ -72,7 +72,7 @@ trap cleanup SIGINT SIGTERM
 sudo service xrdp start
 
 ## write correct window size to chrome properties
-$STARTUPDIR/chrome-init.sh
+###$STARTUPDIR/chrome-init.sh
 
 ## resolve_vnc_connection
 VNC_IP=$(hostname -i)
@@ -120,20 +120,20 @@ echo -e "\n\n------------------ VNC environment started ------------------"
 echo -e "\nVNCSERVER started on DISPLAY= $DISPLAY \n\t=> connect via VNC viewer with $VNC_IP:$VNC_PORT"
 echo -e "\nnoVNC HTML client started:\n\t=> connect via http://$VNC_IP:$NO_VNC_PORT/?password=...\n"
 
-
-if [[ $DEBUG == true ]] || [[ $1 =~ -t|--tail-log ]]; then
-    echo -e "\n------------------ $HOME/.vnc/*$DISPLAY.log ------------------"
-    # if option `-t` or `--tail-log` block the execution and tail the VNC log
-    tail -f $STARTUPDIR/*.log $HOME/.vnc/*$DISPLAY.log
-fi
-
-if [ -z "$1" ] || [[ $1 =~ -w|--wait ]]; then
-    wait $PID_SUB
-else
-    # unknown option ==> call command
-    echo -e "\n\n------------------ EXECUTE COMMAND ------------------"
-    echo "Executing command: '$@'"
-    exec "$@"
-fi
 cron -f
+#if [[ $DEBUG == true ]] || [[ $1 =~ -t|--tail-log ]]; then
+#    echo -e "\n------------------ $HOME/.vnc/*$DISPLAY.log ------------------"
+##    # if option `-t` or `--tail-log` block the execution and tail the VNC log
+ #   tail -f $STARTUPDIR/*.log $HOME/.vnc/*$DISPLAY.log
+#fi
+
+#if [ -z "$1" ] || [[ $1 =~ -w|--wait ]]; then
+#    wait $PID_SUB
+#else
+#    # unknown option ==> call command
+#    echo -e "\n\n------------------ EXECUTE COMMAND ------------------"
+#    echo "Executing command: '$@'"
+#    exec "$@"
+#fi
+
 ##export DISPLAY=:1.0 && cd  /headless/hitleap && nohub /headless/hitleap/HitLeap-Viewer.desktop  >> /headless/headleap.log &
