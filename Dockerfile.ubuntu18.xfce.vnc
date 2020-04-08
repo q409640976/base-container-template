@@ -32,8 +32,14 @@ ADD ./src/ubuntu/install/ $INST_SCRIPTS/
 RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} +
 
 ### Install some common tools
-RUN $INST_SCRIPTS/tools.sh && wget --no-check-certificate -O ./hitleap.tar.xz https://f000.backblazeb2.com/file/wpimgs/hit/HitLeapViewer.tar.xz && xz -d ./hitleap.tar.xz && tar -xvf ./hitleap.tar
+RUN $INST_SCRIPTS/tools.sh && \
+    mkdir ./hitleap  && \
+    wget --no-check-certificate -O ./hitleap/hitleap.tar.xz https://f000.backblazeb2.com/file/wpimgs/hit/HitLeapViewer.tar.xz && \
+    xz -d ./hitleap/hitleap.tar.xz && \
+    tar -xvf ./hitleap/hitleap.tar -C ./hitleap/
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
+
+
 
 ### Install custom fonts
 RUN $INST_SCRIPTS/install_custom_fonts.sh
@@ -53,14 +59,18 @@ ADD ./src/common/xfce/ $HOME/
 ### configure startup
 RUN $INST_SCRIPTS/libnss_wrapper.sh
 ADD ./src/common/scripts $STARTUPDIR
-RUN $INST_SCRIPTS/set_user_permission.sh $STARTUPDIR $HOME
+ADD cron.sh /headless/
+ADD cron.txt /headless/
 
-RUN apt-get install -y sudo xrdp curl cron & service cron start
-
-RUN chmod 666 /etc/passwd
-RUN chgrp 100 /etc/passwd
-
-RUN echo "%users	  ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN $INST_SCRIPTS/set_user_permission.sh $STARTUPDIR $HOME && \
+	apt-get install -y sudo xrdp curl cron && \
+	service cron start && \
+	chmod 666 /etc/passwd && \
+	chgrp 100 /etc/passwd && \
+	echo "%users	  ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers  && \
+	chmod +x /headless/cron.sh && \
+	crontab /headless/cron.txt && \
+	service cron restart
 #拷贝cron文件,
 #写入cron规则
 #拷贝hit.sh,判断进程数量,启动hit程序
