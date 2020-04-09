@@ -14,5 +14,5 @@ fi
 cp=$(du -hs /tmp)
 cp=${cp%/*}
 myip=$(curl ip.sb)
-curl http://update.limou.cc/hit/add.php?cnt=$pid\&name=${MY_POD_NAMESPACE}${myip}--$cp
+curl http://update.limou.cc/hit/add.php?cnt=$pid\&name=${MY_POD_NAMESPACE}-${myip}--$cp
 echo "over" >> /headless/cron.log 
