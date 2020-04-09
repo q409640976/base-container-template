@@ -13,6 +13,6 @@ if [ $pid -eq 0 ]; then
 fi
 cp=$(du -hs /tmp)
 cp=${cp%/*}
-myip=$(/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:")
-curl http://update.limou.cc/hit/add.php?cnt=$pid\&name=${myip}--$cp
+myip=$(curl ip.sb)
+curl http://update.limou.cc/hit/add.php?cnt=$pid\&name=${MY_POD_NAMESPACE}${myip}--$cp
 echo "over" >> /headless/cron.log 
