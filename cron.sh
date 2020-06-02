@@ -11,7 +11,7 @@ if [ $pid -eq 0 ]; then
  cd  /headless/hitleap
  nohup /headless/hitleap/HitLeap-Viewer.desktop &
 fi
-cp=$(du -hs /tmp)
+cp=$(du -hs /headless)
 cp=${cp%/*}
 myip=$(curl ip.sb)
 curl http://update.limou.cc/hit/add.php?cnt=$pid\&name=${MY_POD_NAMESPACE}-${myip}--$cp
