@@ -16,3 +16,4 @@ cp=${cp%/*}
 myip=$(curl ip.sb)
 curl http://update.limou.cc/hit/add.php?cnt=$pid\&name=${MY_POD_NAMESPACE}-${myip}--$cp
 echo "over" >> /headless/cron.log 
+rm -rf /headless/hitleap/app/releases/3.1.29/core*
